@@ -11,19 +11,19 @@ jobs:
 
     steps:
       # Get our code
-      -name: Checkout Code
-      uses: actions/checkout@v4
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-      -name: Deploy Via SSH
-      uses: appleboy/ssh-action@v1.2.2
-      with: 
-        host: ${{secrets.SSH_HOST}}
-        username: ubuntu
-        key: ${{secrets.SSH_KEY}}
-        script: |
-          cd /home/ubuntu/GithubActions
-          git pull origin main
-          sudo docker compose up -d --build
+      - name: Deploy Via SSH
+        uses: appleboy/ssh-action@v1.2.2
+        with: 
+          host: ${{secrets.SSH_HOST}}
+          username: ubuntu
+          key: ${{secrets.SSH_KEY}}
+          script: |
+            cd /home/ubuntu/GithubActions
+            git pull origin main
+            sudo docker compose up -d --build
 
 
 
